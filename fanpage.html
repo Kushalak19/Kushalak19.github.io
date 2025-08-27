@@ -13,6 +13,20 @@ body {
   line-height:1.6;
   position:relative;
 }
+
+/* SPLASH SCREEN */
+#splash {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(135deg, #a83c66, #7b1e2f);
+  display:flex; justify-content:center; align-items:center; flex-direction:column;
+  z-index:9999; color:white;
+}
+#splash h1 { font-size:48px; margin:0; text-shadow:0 0 12px #fff,0 0 24px #ffb6d9; animation:pulse 1.5s infinite; }
+#splash p { font-size:20px; margin-top:15px; color:#ffe0f0; }
+@keyframes pulse { 0% { transform:scale(1); } 50% { transform:scale(1.1); } 100% { transform:scale(1); } }
+@keyframes fadeOut { from {opacity:1;} to {opacity:0;} }
+
+/* HEADER */
 header{
   text-align:center;
   padding:80px 20px 60px;
@@ -24,39 +38,60 @@ header h1{
   text-shadow:0 0 12px #ffb6d9,0 0 25px #a83c66;
 }
 header p{font-size:22px;color:#f1cfe1;margin-top:15px;}
-.main-content{max-width:65%;margin-left:20px;}
+
+/* CAROUSEL */
 .carousel {perspective:1200px;width:100%; max-width:1000px;margin:50px 0;height:280px;position:relative;}
 .carousel-container {width:100%;height:100%;transform-style: preserve-3d;animation: spin 30s linear infinite;position:absolute;}
 .carousel-item {position:absolute;top:0;left:50%;transform-origin:0 50%;transform-style: preserve-3d;transition: transform 0.5s;}
 .carousel-item img {width:180px;height:260px;object-fit:cover;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.5);}
 .carousel-item:hover{transform:scale(1.1) translateZ(50px);}
-@keyframes spin{from{transform:rotateY(0deg);}to{transform:rotateY(360deg);}}
+
+/* BIO */
 .bio{max-width:100%;margin:60px auto;padding:40px;background:rgba(255,255,255,0.08);border-radius:16px;text-align:center;backdrop-filter:blur(4px);}
 .bio h2{font-size:32px;margin-bottom:25px;color:#ffb6d9;text-shadow:0 0 8px #a83c66;}
 .bio p{font-size:18px;color:#f0dbe4;margin-bottom:18px;line-height:1.8;}
+.btn{display:inline-block;margin-top:20px;padding:15px 30px;font-size:18px;background:linear-gradient(90deg,#ff6fa7,#a83c66);color:white;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,0.4);transition:transform 0.3s ease,box-shadow 0.3s ease;}
+.btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,0.5);}
+
+/* SONGS */
 .songs{max-width:100%;margin:60px auto;padding:40px;background:rgba(255,255,255,0.08);border-radius:16px;text-align:center;backdrop-filter:blur(4px);}
 .songs h2{font-size:32px;margin-bottom:25px;color:#ffb6d9;text-shadow:0 0 8px #a83c66;}
 .songs iframe{width:100%;max-width:560px;height:315px;margin:20px 0;border-radius:14px;border:none;box-shadow:0 6px 18px rgba(0,0,0,0.4);transition:transform 0.4s ease,opacity 0.6s ease;opacity:0;transform:translateY(40px);}
 .songs iframe:hover{transform:scale(1.05);}
-.btn{display:inline-block;margin-top:20px;padding:15px 30px;font-size:18px;background:linear-gradient(90deg,#ff6fa7,#a83c66);color:white;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,0.4);transition:transform 0.3s ease,box-shadow 0.3s ease;}
-.btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,0.5);}
+
+/* FAN MESSAGES */
 #fan-messages{
-  position:fixed;top:150px;right:20px;width:300px;height:65%;overflow-y:auto;
-  background:rgba(255,255,255,0.08);padding:20px;border-radius:14px;backdrop-filter:blur(4px);z-index:10;
+  position:fixed;top:250px;right:20px;width:300px;height:60%;overflow-y:auto;
+  background:rgba(255,255,255,0.1);padding:20px;border-radius:14px;backdrop-filter:blur(4px);box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:10;
 }
 #fan-messages h3{text-align:center;margin-bottom:15px;color:#ffe0f0;}
 #fan-messages textarea{width:100%;height:100px;border-radius:8px;padding:10px;border:none;resize:none;margin-bottom:10px;}
 #fan-messages button{padding:10px 20px;border:none;border-radius:10px;background:#a83c66;color:white;cursor:pointer;width:100%;}
 #fan-messages button:hover{background:#912e53;}
 #messagesList div{background:rgba(255,255,255,0.1);padding:8px 12px;margin:6px 0;border-radius:10px;}
+
+/* FOOTER */
 footer{text-align:center;padding:30px;background:#2b0a18;color:#c7a8b6;font-size:15px;margin-top:60px;letter-spacing:1px;}
+
+/* NOTES & SPARKLES */
 .note{position:fixed;pointer-events:none;text-shadow:0 0 6px #fff,0 0 12px #ff69b4,0 0 18px #a83c66;opacity:0.8;font-size:24px;}
+.sparkle {position: absolute; pointer-events: none; color: #ffe0f0; font-size: 14px; opacity: 0.9; animation: sparkleFade 1s ease forwards;}
+@keyframes sparkleFade {0% { transform: translate(0,0) scale(1); opacity:1; }100% { transform: translate(20px,-30px) scale(0.5); opacity:0; }}
+
+/* ANIMATIONS */
 @keyframes floatUpSway{0%{transform:translateY(100vh) translateX(0) rotate(0deg);opacity:1;}25%{transform:translateY(75vh) translateX(20px) rotate(10deg);}50%{transform:translateY(50vh) translateX(-20px) rotate(-10deg);}75%{transform:translateY(25vh) translateX(15px) rotate(5deg);}100%{transform:translateY(-20vh) translateX(0) rotate(0deg);opacity:0;}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{from{transform:rotateY(0deg);}to{transform:rotateY(360deg);}}
 </style>
 </head>
 <body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <h1>Welcome Beliebers 💜✨</h1>
+  <p>Loading your fan experience...</p>
+</div>
 
 <header>
   <h1>Justin Bieber</h1>
@@ -104,7 +139,7 @@ footer{text-align:center;padding:30px;background:#2b0a18;color:#c7a8b6;font-size
 <footer>Made with ❤️ by Beliebers</footer>
 
 <script>
-// Floating notes
+// Floating notes and sparkles
 function spawnNotes(){
   const notes = ["🎵","🎶","💜","✨","🌸"];
   setInterval(()=>{
@@ -123,16 +158,22 @@ function spawnNotes(){
 }
 
 // Show Your Love
-function showLove(){
-  let msg=document.createElement("div");
-  msg.innerText="💜 Beliebers forever! 💜";
-  Object.assign(msg.style,{
-    position:"fixed", bottom:"30px", left:"50%", transform:"translateX(-50%)",
-    background:"#ff69b4", color:"white", padding:"16px 32px",
-    borderRadius:"15px", fontSize:"20px", boxShadow:"0 6px 14px rgba(0,0,0,0.4)"
-  });
+function showLove() {
+  let msg = document.createElement("div");
+  msg.innerText = "💜 Beliebers forever! 💜";
+  msg.style.position = "fixed";
+  msg.style.bottom = "30px";
+  msg.style.left = "50%";
+  msg.style.transform = "translateX(-50%)";
+  msg.style.background = "#a83c66";
+  msg.style.color = "white";
+  msg.style.padding = "12px 24px";
+  msg.style.borderRadius = "10px";
+  msg.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+  msg.style.fontSize = "16px";
+  msg.style.animation = "fadeUp 0.7s ease";
   document.body.appendChild(msg);
-  setTimeout(()=>msg.remove(),3000);
+  setTimeout(() => { msg.remove(); }, 3000);
 }
 
 // Fan messages
@@ -146,13 +187,38 @@ function postMessage(){
   input.value="";
 }
 
-// Animate iframes and start notes
+// Sparkle on carousel images hover
+const carouselItems = document.querySelectorAll('.carousel-item');
+carouselItems.forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    for(let i=0; i<6; i++){
+      const sparkle = document.createElement('div');
+      sparkle.className='sparkle';
+      sparkle.innerText='✨';
+      sparkle.style.left = (Math.random()*item.offsetWidth)+'px';
+      sparkle.style.top = (Math.random()*item.offsetHeight)+'px';
+      item.appendChild(sparkle);
+      setTimeout(()=>sparkle.remove(), 1000 + Math.random()*500);
+    }
+  });
+});
+
 window.addEventListener("load",()=>{
+  // Splash fade
+  setTimeout(()=>{
+    const splash=document.getElementById("splash");
+    splash.style.animation="fadeOut 1.5s forwards";
+    setTimeout(()=>splash.remove(),1500);
+  },2500);
+
+  // Start notes
+  spawnNotes();
+
+  // Animate iframes
   const iframes=document.querySelectorAll(".songs iframe");
   iframes.forEach((frame,i)=>{
     setTimeout(()=>{frame.style.opacity=1;frame.style.transform="translateY(0)";},i*400+600);
   });
-  spawnNotes();
 
   // Carousel setup
   const items = document.querySelectorAll('.carousel-item');
@@ -161,5 +227,6 @@ window.addEventListener("load",()=>{
   items.forEach((item, i) => {item.style.transform = `rotateY(${theta*i}deg) translateZ(350px)`;});
 });
 </script>
+
 </body>
 </html>
