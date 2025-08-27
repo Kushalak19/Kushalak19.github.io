@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <title>Justin Bieber Fan Page</title>
 <style>
-/* BODY & BACKGROUND */
 body {
   margin:0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg,#7b5e99,#b592c1);
-  background-size: 400% 400%;
-  animation: bgShift 25s ease infinite;
+  font-family:'Arial',sans-serif;
+  background: linear-gradient(135deg, #f1c0c7, #d27b82);
+  background-size:400% 400%;
+  animation:bgShift 25s ease infinite;
   color:#fff;
   overflow-x:hidden;
   line-height:1.6;
@@ -26,17 +25,11 @@ body {
 #splash{
   position:fixed;top:0;left:0;width:100%;height:100%;
   display:flex;justify-content:center;align-items:center;flex-direction:column;
-  background: rgba(123,94,153,0.95);
+  background: rgba(210,123,130,0.95);
   z-index:9999;color:#fff;
 }
-#splash h1{
-  font-size:50px;margin:0;
-  text-shadow:0 0 15px #fff,0 0 30px #ffe0f0;
-  animation:pulse 1.5s infinite;
-}
-#splash p{
-  font-size:20px;margin-top:15px;color:#f0d0f5;
-}
+#splash h1{font-size:50px;margin:0;text-shadow:0 0 15px #fff,0 0 30px #ffe0f0;animation:pulse 1.5s infinite;}
+#splash p{font-size:20px;margin-top:15px;color:#ffe0f0;}
 @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
 @keyframes fadeOut{from{opacity:1;}to{opacity:0;}}
 
@@ -45,7 +38,7 @@ header{
   text-align:center;
   padding:80px 20px 60px;
   position:relative;
-  background:rgba(0,0,0,0.3);
+  background:rgba(0,0,0,0.2);
   overflow:hidden;
 }
 header h1{
@@ -53,85 +46,44 @@ header h1{
   text-shadow:0 0 12px #ffb6d9,0 0 25px #a83c66;
   animation:fadeDown 1.5s ease;
 }
-header p{
-  font-size:22px;color:#f1cfe1;margin-top:15px;
-  animation:fadeUp 2s ease;
-}
+header p{font-size:22px;color:#f1cfe1;margin-top:15px;animation:fadeUp 2s ease;}
+
+/* MAIN CONTENT */
+.main-content{max-width:65%;margin-left:20px;}
 
 /* CAROUSEL */
-.carousel {
-  perspective:1200px;
-  width:100%; max-width:900px;
-  margin:50px auto;
-  height:280px;
-  position:relative;
-}
-.carousel-container {
-  width:100%;height:100%;
-  transform-style: preserve-3d;
-  animation: spin 20s linear infinite;
-  position:absolute;
-}
-.carousel-item {
-  position:absolute;top:0;left:50%;
-  transform-origin:0 50%;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-}
-.carousel-item img {
-  width:180px; height:260px;
-  object-fit:cover;
-  border-radius:14px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.5);
-}
-.carousel-item:hover{
-  transform:scale(1.1) translateZ(50px);
-}
+.carousel {perspective:1200px;width:100%; max-width:1000px;margin:50px 0;height:280px;position:relative;}
+.carousel-container {width:100%;height:100%;transform-style: preserve-3d;animation: spin 30s linear infinite;position:absolute;}
+.carousel-item {position:absolute;top:0;left:50%;transform-origin:0 50%;transform-style: preserve-3d;transition: transform 0.5s;}
+.carousel-item img {width:180px;height:260px;object-fit:cover;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.5);}
+.carousel-item:hover{transform:scale(1.1) translateZ(50px);}
 @keyframes spin{from{transform:rotateY(0deg);}to{transform:rotateY(360deg);}}
 
 /* BIO */
-.bio{
-  max-width:900px;margin:60px auto;padding:40px;
-  background:rgba(255,255,255,0.08);
-  border-radius:16px;text-align:center;
-  backdrop-filter:blur(4px);
-  animation:fadeUp 1.5s ease;
-}
-.bio h2{
-  font-size:32px;margin-bottom:25px;color:#ffb6d9;text-shadow:0 0 8px #a83c66;
-}
+.bio{max-width:100%;margin:60px auto;padding:40px;background:rgba(255,255,255,0.08);border-radius:16px;text-align:center;backdrop-filter:blur(4px);animation:fadeUp 1.5s ease;}
+.bio h2{font-size:32px;margin-bottom:25px;color:#ffb6d9;text-shadow:0 0 8px #a83c66;}
 .bio p{font-size:18px;color:#f0dbe4;margin-bottom:18px;line-height:1.8;}
 
 /* SONGS */
-.songs{
-  max-width:900px;margin:60px auto;padding:40px;
-  background:rgba(255,255,255,0.08);
-  border-radius:16px;text-align:center;
-  backdrop-filter:blur(4px);
-}
+.songs{max-width:100%;margin:60px auto;padding:40px;background:rgba(255,255,255,0.08);border-radius:16px;text-align:center;backdrop-filter:blur(4px);}
 .songs h2{font-size:32px;margin-bottom:25px;color:#ffb6d9;text-shadow:0 0 8px #a83c66;}
-.songs iframe{
-  width:100%;max-width:560px;height:315px;margin:20px 0;border-radius:14px;border:none;
-  box-shadow:0 6px 18px rgba(0,0,0,0.4);
-  transition:transform 0.4s ease,opacity 0.6s ease;opacity:0;transform:translateY(40px);
-}
+.songs iframe{width:100%;max-width:560px;height:315px;margin:20px 0;border-radius:14px;border:none;box-shadow:0 6px 18px rgba(0,0,0,0.4);transition:transform 0.4s ease,opacity 0.6s ease;opacity:0;transform:translateY(40px);}
 .songs iframe:hover{transform:scale(1.05);}
 
-/* FAN MESSAGES */
-#fan-messages{max-width:600px;margin:40px auto;padding:20px;background:rgba(255,255,255,0.06);border-radius:14px;}
-#fan-messages h3{text-align:center;margin-bottom:15px;color:#ffe0f0;}
-#fan-messages textarea{width:100%;height:80px;border-radius:8px;padding:10px;border:none;resize:none;margin-bottom:10px;}
-#fan-messages button{padding:10px 20px;border:none;border-radius:10px;background:#a83c66;color:white;cursor:pointer;}
-#fan-messages button:hover{background:#912e53;}
-
 /* BUTTON */
-.btn{
-  display:inline-block;margin-top:20px;padding:15px 30px;
-  font-size:18px;background:linear-gradient(90deg,#ff6fa7,#a83c66);
-  color:white;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,0.4);
-  transition:transform 0.3s ease,box-shadow 0.3s ease;
-}
+.btn{display:inline-block;margin-top:20px;padding:15px 30px;font-size:18px;background:linear-gradient(90deg,#ff6fa7,#a83c66);color:white;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,0.4);transition:transform 0.3s ease,box-shadow 0.3s ease;}
 .btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,0.5);}
+
+/* FAN MESSAGES FIXED RIGHT */
+#fan-messages{
+  position:fixed;top:100px;right:20px;width:300px;height:70%;overflow-y:auto;
+  background:rgba(255,255,255,0.08);padding:20px;border-radius:14px;backdrop-filter:blur(4px);z-index:10;
+}
+#fan-messages h3{text-align:center;margin-bottom:15px;color:#ffe0f0;}
+#fan-messages textarea{width:100%;height:100px;border-radius:8px;padding:10px;border:none;resize:none;margin-bottom:10px;}
+#fan-messages button{padding:10px 20px;border:none;border-radius:10px;background:#a83c66;color:white;cursor:pointer;width:100%;}
+#fan-messages button:hover{background:#912e53;}
+#messagesList div{background:rgba(255,255,255,0.1);padding:8px 12px;margin:6px 0;border-radius:10px;}
 
 /* FOOTER */
 footer{text-align:center;padding:30px;background:#2b0a18;color:#c7a8b6;font-size:15px;margin-top:60px;letter-spacing:1px;}
@@ -139,12 +91,7 @@ footer{text-align:center;padding:30px;background:#2b0a18;color:#c7a8b6;font-size
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
-@keyframes floatUpSway{0%{transform:translateY(100vh) translateX(0) rotate(0deg);opacity:1;}
-25%{transform:translateY(75vh) translateX(20px) rotate(10deg);}
-50%{transform:translateY(50vh) translateX(-20px) rotate(-10deg);}
-75%{transform:translateY(25vh) translateX(15px) rotate(5deg);}
-100%{transform:translateY(-20vh) translateX(0) rotate(0deg);opacity:0;}
-}
+@keyframes floatUpSway{0%{transform:translateY(100vh) translateX(0) rotate(0deg);opacity:1;}25%{transform:translateY(75vh) translateX(20px) rotate(10deg);}50%{transform:translateY(50vh) translateX(-20px) rotate(-10deg);}75%{transform:translateY(25vh) translateX(15px) rotate(5deg);}100%{transform:translateY(-20vh) translateX(0) rotate(0deg);opacity:0;}}
 .note,.explosion{position:fixed;pointer-events:none;text-shadow:0 0 6px #fff,0 0 12px #ff69b4,0 0 18px #a83c66;opacity:0.8;font-size:24px;}
 </style>
 </head>
@@ -161,34 +108,41 @@ footer{text-align:center;padding:30px;background:#2b0a18;color:#c7a8b6;font-size
   <p>Beliebers Forever 💜</p>
 </header>
 
-<!-- 3D CAROUSEL -->
-<section class="carousel">
-  <div class="carousel-container">
-    <div class="carousel-item"><img src="justin1.jpg" alt="Justin 1"></div>
-    <div class="carousel-item"><img src="justin2.jpg" alt="Justin 2"></div>
-    <div class="carousel-item"><img src="justin3.jpg" alt="Justin 3"></div>
-  </div>
-</section>
+<div class="main-content">
+  <!-- 3D CAROUSEL -->
+  <section class="carousel">
+    <div class="carousel-container">
+      <div class="carousel-item"><img src="justin1.jpg" alt="Justin 1"></div>
+      <div class="carousel-item"><img src="justin2.jpg" alt="Justin 2"></div>
+      <div class="carousel-item"><img src="justin3.jpg" alt="Justin 3"></div>
+      <div class="carousel-item"><img src="justin4.jpg" alt="Justin 4"></div>
+      <div class="carousel-item"><img src="justin5.jpg" alt="Justin 5"></div>
+      <div class="carousel-item"><img src="justin6.jpg" alt="Justin 6"></div>
+    </div>
+  </section>
 
-<section class="bio">
-  <h2>About Justin</h2>
-  <p>Justin Bieber is a Canadian singer, songwriter, and global pop sensation. He rose to fame with “Baby” at age 13 and has since won numerous awards including Grammys, AMAs, and Billboard honors. Known for hits like “Sorry,” “Love Yourself,” and “Peaches,” he inspires millions worldwide. Beyond music, he’s a fashion icon, philanthropist, and multi-instrumentalist. Beliebers love his heart, his style, and his music that transcends generations!</p>
-  <a href="javascript:void(0)" class="btn" onclick="showLove()">Show Your Love 💖</a>
-</section>
+  <!-- BIO -->
+  <section class="bio">
+    <h2>About Justin</h2>
+    <p>Justin Bieber is a Canadian singer, songwriter, and global pop sensation. He rose to fame with “Baby” at age 13 and has since won numerous awards including Grammys, AMAs, and Billboard honors. Known for hits like “Sorry,” “Love Yourself,” and “Peaches,” he inspires millions worldwide. Beyond music, he’s a fashion icon, philanthropist, and multi-instrumentalist. Beliebers love his heart, his style, and his music that transcends generations! Keep following Justin for his latest hits and unforgettable performances.</p>
+    <a href="javascript:void(0)" class="btn" onclick="showLove()">Show Your Love 💖</a>
+  </section>
 
-<section class="songs">
-  <h2>🎵 Top Justin Bieber Songs</h2>
-  <iframe src="https://www.youtube.com/embed/kffacxfA7G4" title="Justin Bieber - Baby"></iframe>
-  <iframe src="https://www.youtube.com/embed/fRh_vgS2dFE" title="Justin Bieber - Sorry"></iframe>
-  <iframe src="https://www.youtube.com/embed/oyEuk8j8imI" title="Justin Bieber - Love Yourself"></iframe>
-  <iframe src="https://www.youtube.com/embed/tQ0yjYUFKAE" title="Justin Bieber - Peaches"></iframe>
-</section>
+  <!-- SONGS -->
+  <section class="songs">
+    <h2>🎵 Top Justin Bieber Songs</h2>
+    <iframe src="https://www.youtube.com/embed/kffacxfA7G4" title="Justin Bieber - Baby"></iframe>
+    <iframe src="https://www.youtube.com/embed/fRh_vgS2dFE" title="Justin Bieber - Sorry"></iframe>
+    <iframe src="https://www.youtube.com/embed/oyEuk8j8imI" title="Justin Bieber - Love Yourself"></iframe>
+    <iframe src="https://www.youtube.com/embed/tQ0yjYUFKAE" title="Justin Bieber - Peaches"></iframe>
+  </section>
+</div>
 
-<!-- FAN MESSAGES -->
+<!-- FAN MESSAGES FIXED RIGHT -->
 <section id="fan-messages">
-  <h3>Leave a message for Justin 💜</h3>
+  <h3>Leave a message 💜</h3>
   <textarea id="fanInput" placeholder="Type your message here..."></textarea><br>
-  <button onclick="postMessage()">Post Message</button>
+  <button onclick="postMessage()">Post</button>
   <div id="messagesList"></div>
 </section>
 
@@ -241,15 +195,15 @@ function spawnBackgroundNotes() {
 
 // Show Your Love explosion
 function showLove() {
-  const numParticles=30;
+  const numParticles=35;
   const notes=["💜","💖","🎶","✨","🌸"];
   for(let i=0;i<numParticles;i++){
     let p=document.createElement("div");
     p.className="explosion";
     p.innerText=notes[Math.floor(Math.random()*notes.length)];
     p.style.left=(window.innerWidth/2-20+Math.random()*40-20)+"px";
-    p.style.top=(window.innerHeight-100+Math.random()*50-25)+"px";
-    p.style.fontSize=(20+Math.random()*18)+"px";
+    p.style.top=(window.innerHeight/2-30+Math.random()*60-30)+"px";
+    p.style.fontSize=(22+Math.random()*20)+"px";
     const angle=Math.random()*2*Math.PI;
     const speed=3+Math.random()*4;
     const vx=Math.cos(angle)*speed*10;
@@ -273,10 +227,6 @@ function postMessage(){
   const list=document.getElementById("messagesList");
   if(input.value.trim()==="") return;
   const msg=document.createElement("div");
-  msg.style.background="rgba(255,255,255,0.1)";
-  msg.style.padding="8px 12px";
-  msg.style.margin="6px 0";
-  msg.style.borderRadius="10px";
   msg.innerText=input.value;
   list.prepend(msg);
   input.value="";
