@@ -1,265 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Justin Bieber Fan Page</title>
-<style>
-/* ================= BODY & BACKGROUND ================= */
-body {
-  margin: 0;
-  font-family: 'Comic Neue', cursive, Arial, sans-serif;
-  background: linear-gradient(135deg, #f9c5d1, #d1c5f9, #a6e3f9, #f9f3c5);
-  background-size: 400% 400%;
-  animation: pastelShift 20s ease infinite;
-  overflow-x: hidden;
-  color: #333;
-}
-@keyframes pastelShift {
-  0% {background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
+  <meta charset="UTF-8">
+  <title>Justin Bieber Fan Page</title>
+  <style>
+    /* BODY & BACKGROUND */
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #2b0a18, #4b1e2f, #6b2c44, #a83c66);
+      background-size: 400% 400%;
+      animation: bgShift 15s ease infinite;
+      color: #f4e8ec;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-/* ================= SPLASH ================= */
-#splash {
-  position: fixed; top:0; left:0; width:100%; height:100%;
-  display:flex; justify-content:center; align-items:center; flex-direction:column;
-  background: linear-gradient(135deg, #ff9ad0, #cfa6f9);
-  z-index:9999; color:#fff;
-}
-#splash h1 {
-  font-size: 60px;
-  margin:0;
-  text-shadow:0 0 15px #fff, 0 0 30px #ffb6c1;
-  animation: pulse 1.5s infinite;
-}
-#splash p {
-  font-size:22px; margin-top:15px; color:#ffe0f0;
-}
-@keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
+    /* SPLASH SCREEN */
+    #splash {
+      position: fixed;
+      top:0; left:0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #a83c66, #4b1e2f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+      color: #fff;
+    }
+    #splash h1 {
+      font-size: 48px;
+      margin: 0;
+      text-shadow: 0 0 12px #fff, 0 0 24px #ffb6d9;
+      animation: pulse 1.5s infinite;
+    }
+    #splash p {
+      font-size: 20px;
+      margin-top: 15px;
+      color: #ffe0f0;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeOut { from {opacity:1;} to{opacity:0;} }
 
-/* ================= HEADER ================= */
-header {
-  text-align:center;
-  padding:60px 20px;
-  position: relative;
-}
-header h1 {
-  font-size:50px;
-  color:#ff69b4;
-  text-shadow:0 0 10px #fff,0 0 20px #ffb6c1;
-  animation: fadeDown 1.5s ease;
-}
-header p { font-size:20px; color:#f1cfe1; animation: fadeUp 2s ease; }
+    /* HEADER */
+    header {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 60px;
+      margin: 0;
+      color: #fff;
+      letter-spacing: 4px;
+      text-shadow: 0 0 12px #ffb6d9, 0 0 25px #a83c66;
+      animation: fadeDown 1.5s ease;
+    }
+    header p {
+      font-size: 22px;
+      color: #f1cfe1;
+      margin-top: 15px;
+      animation: fadeUp 2s ease;
+    }
 
-/* ================= GALLERY ================= */
-.gallery {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  max-width:1000px;
-  margin:50px auto;
-  padding:0 20px;
-}
-.gallery img {
-  border-radius:16px;
-  width:100%;
-  height:250px;
-  object-fit:cover;
-  box-shadow:0 6px 18px rgba(255,182,193,0.5);
-  transition: transform 0.5s ease, filter 0.5s ease;
-  opacity:0;
-}
-.gallery img:hover { transform: scale(1.08) rotate(-2deg); filter: brightness(1.2); animation: bounce 0.6s; }
-@keyframes bounce {0%,100%{transform:scale(1.08) rotate(-2deg);}50%{transform:scale(1.12) rotate(-1deg);}}
+    /* SECTIONS */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.5);
+      transition: transform 0.5s ease, filter 0.5s ease;
+      opacity: 0;
+    }
+    .gallery img:hover {
+      transform: scale(1.08) rotate(-1deg);
+      filter: brightness(1.2);
+    }
 
-/* ================= BIO & SONGS ================= */
-.bio, .songs {
-  max-width:850px;
-  margin:80px auto;
-  padding:40px;
-  background: rgba(255,255,255,0.25);
-  border-radius:18px;
-  backdrop-filter: blur(6px);
-  box-shadow:0 6px 18px rgba(255,182,193,0.4);
-  text-align:center;
-  opacity:0;
-  transform:translateY(30px);
-  transition: all 0.8s ease;
-}
-.bio h2, .songs h2 {
-  font-size:30px;
-  margin-bottom:20px;
-  color:#ff69b4;
-  text-shadow:0 0 8px #ffb6c1;
-}
-.bio p { font-size:18px; color:#f0dbe4; margin-bottom:16px; }
-.songs iframe {
-  width:100%; max-width:500px; height:280px; margin:15px 0;
-  border-radius:12px; border:none;
-  box-shadow:0 6px 14px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease, opacity 0.6s ease;
-  opacity:0; transform:translateY(40px);
-}
+    .bio, .songs {
+      max-width: 850px;
+      margin: 80px auto;
+      padding: 50px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      text-align: center;
+      animation: fadeUp 1.5s ease;
+      backdrop-filter: blur(4px);
+    }
+    .bio h2, .songs h2 {
+      font-size: 32px;
+      margin-bottom: 25px;
+      color: #ffb6d9;
+      text-shadow: 0 0 8px #a83c66;
+    }
+    .bio p {
+      font-size: 20px;
+      color: #f0dbe4;
+      margin-bottom: 18px;
+    }
+    .songs iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      margin: 20px 0;
+      border-radius: 14px;
+      border: none;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .songs iframe:hover { transform: scale(1.05); }
 
-/* ================= BUTTON ================= */
-.btn {
-  background: linear-gradient(135deg,#ffb6c1,#ff69b4);
-  color:white; border-radius:25px; padding:14px 28px; font-size:18px;
-  box-shadow:0 4px 12px rgba(255,182,193,0.6);
-  transition: all 0.3s ease;
-}
-.btn:hover { transform:scale(1.1) rotate(-1deg); box-shadow:0 6px 16px rgba(255,182,193,0.8); }
+    /* BUTTON */
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 15px 32px;
+      font-size: 20px;
+      background: linear-gradient(90deg, #ff6fa7, #a83c66);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
 
-/* ================= FOOTER ================= */
-footer {
-  text-align:center;
-  padding:25px;
-  background:#f9c5d1;
-  font-size:15px;
-  margin-top:50px;
-  color:#333;
-}
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #2b0a18;
+      color: #c7a8b6;
+      font-size: 15px;
+      margin-top: 60px;
+      letter-spacing: 1px;
+    }
 
-/* ================= ANIMATIONS ================= */
-@keyframes fadeUp {from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);}}
-@keyframes fadeDown {from{opacity:0; transform:translateY(-30px);} to{opacity:1; transform:translateY(0);}}
-@keyframes floatUpSway {
-  0%{transform:translateY(100vh) translateX(0) rotate(0deg);opacity:1;}
-  25%{transform:translateY(75vh) translateX(30px) rotate(15deg);}
-  50%{transform:translateY(50vh) translateX(-30px) rotate(-10deg);}
-  75%{transform:translateY(25vh) translateX(25px) rotate(10deg);}
-  100%{transform:translateY(-20vh) translateX(0) rotate(0deg);opacity:0;}
-}
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity:0; transform: translateY(30px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes fadeDown { from { opacity:0; transform: translateY(-30px);} to{opacity:1; transform:translateY(0);} }
 
-/* ================= FLOATING NOTES & SPARKLES ================= */
-.note, .sparkle {
-  position:fixed; pointer-events:none; opacity:0.95;
-  text-shadow:0 0 12px #fff,0 0 24px #ff69b4;
-}
-</style>
+    /* FLOATING NOTES */
+    .note {
+      position: fixed;
+      pointer-events: none;
+      text-shadow: 0 0 6px #fff, 0 0 12px #ff69b4, 0 0 18px #a83c66;
+      opacity: 0.8;
+    }
+    @keyframes floatUpSway {
+      0%   { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 1; }
+      25%  { transform: translateY(75vh) translateX(20px) rotate(10deg); }
+      50%  { transform: translateY(50vh) translateX(-20px) rotate(-10deg); }
+      75%  { transform: translateY(25vh) translateX(15px) rotate(5deg); }
+      100% { transform: translateY(-20vh) translateX(0) rotate(0deg); opacity: 0; }
+    }
+
+    /* IMAGE FADE-IN */
+    @keyframes imageFadeIn {
+      from { opacity:0; transform: translateY(40px) scale(0.95);}
+      to   { opacity:1; transform: translateY(0) scale(1);}
+    }
+
+  </style>
 </head>
 <body>
 
-<!-- SPLASH -->
-<div id="splash">
-  <h1>Welcome Belieber 💜✨</h1>
-  <p>Loading your fan experience...</p>
-</div>
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <h1>Welcome Belieber 💜✨</h1>
+    <p>Loading your fan experience...</p>
+  </div>
 
-<!-- HEADER -->
-<header>
-  <h1>Justin Bieber</h1>
-  <p>Beliebers Forever 💜</p>
-</header>
+  <!-- HEADER -->
+  <header>
+    <h1>Justin Bieber</h1>
+    <p>Beliebers Forever 💜</p>
+  </header>
 
-<!-- GALLERY -->
-<section class="gallery">
-  <img src="justin1.jpg" alt="Justin Bieber 1">
-  <img src="justin2.jpg" alt="Justin Bieber 2">
-  <img src="justin3.jpg" alt="Justin Bieber 3">
-</section>
+  <!-- GALLERY -->
+  <section class="gallery">
+    <img src="justin1.jpg" alt="Justin Bieber 1">
+    <img src="justin2.jpg" alt="Justin Bieber 2">
+    <img src="justin3.jpg" alt="Justin Bieber 3">
+  </section>
 
-<!-- BIO -->
-<section class="bio">
-  <h2>About Justin</h2>
-  <p>Justin Bieber is a Canadian singer, songwriter, and global pop icon...</p>
-  <a href="javascript:void(0)" class="btn" onclick="showLove()">Show Your Love 💖</a>
-</section>
+  <!-- BIO -->
+  <section class="bio">
+    <h2>About Justin</h2>
+    <p>Justin Bieber is a Canadian singer, songwriter, and global pop icon...</p>
+    <a href="javascript:void(0)" class="btn" onclick="showLove()">Show Your Love 💖</a>
+  </section>
 
-<!-- SONGS -->
-<section class="songs">
-  <h2>🎵 Top Justin Bieber Songs</h2>
-  <iframe src="https://www.youtube.com/embed/kffacxfA7G4" title="Justin Bieber - Baby"></iframe>
-  <iframe src="https://www.youtube.com/embed/fRh_vgS2dFE" title="Justin Bieber - Sorry"></iframe>
-  <iframe src="https://www.youtube.com/embed/oyEuk8j8imI" title="Justin Bieber - Love Yourself"></iframe>
-  <iframe src="https://www.youtube.com/embed/tQ0yjYUFKAE" title="Justin Bieber - Peaches"></iframe>
-  <iframe src="https://www.youtube.com/embed/CHVhwcOg6y8" title="Justin Bieber - What Do You Mean?"></iframe>
-  <iframe src="https://www.youtube.com/embed/R4em3LKQCAQ" title="Justin Bieber - Boyfriend"></iframe>
-</section>
+  <!-- SONGS -->
+  <section class="songs">
+    <h2>🎵 Top Justin Bieber Songs</h2>
+    <iframe src="https://www.youtube.com/embed/kffacxfA7G4" title="Justin Bieber - Baby"></iframe>
+    <iframe src="https://www.youtube.com/embed/fRh_vgS2dFE" title="Justin Bieber - Sorry"></iframe>
+    <iframe src="https://www.youtube.com/embed/oyEuk8j8imI" title="Justin Bieber - Love Yourself"></iframe>
+    <iframe src="https://www.youtube.com/embed/tQ0yjYUFKAE" title="Justin Bieber - Peaches"></iframe>
+  </section>
 
-<footer>
-  Made with ❤️ by Beliebers | You're so cute
-</footer>
+  <footer>
+    Made with ❤️ by Beliebers | You're so cute
+  </footer>
 
-<script>
-// Splash fade
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    const splash=document.getElementById("splash");
-    splash.style.transition="opacity 1.5s";
-    splash.style.opacity=0;
-    setTimeout(()=>splash.remove(),1500);
+  <script>
+    // Show love button popup
+    function showLove() {
+      let msg = document.createElement("div");
+      msg.innerText = "💜 Beliebers forever! 💜";
+      Object.assign(msg.style, {
+        position: "fixed",
+        bottom: "30px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        background: "#a83c66",
+        color: "white",
+        padding: "14px 28px",
+        borderRadius: "12px",
+        boxShadow: "0 4px 14px rgba(0,0,0,0.4)",
+        fontSize: "18px",
+        animation: "fadeUp 0.7s ease"
+      });
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 3000);
+    }
 
-    // Animate gallery images
-    const imgs=document.querySelectorAll(".gallery img");
-    imgs.forEach((img,i)=>{
-      img.style.animation=`fadeUp 1s ease forwards`;
-      img.style.animationDelay=`${i*0.3}s`;
+    // Floating musical notes
+    const notes = ["🎵","🎶","💜","✨"];
+    setInterval(() => {
+      let note = document.createElement("div");
+      note.className = "note";
+      note.innerText = notes[Math.floor(Math.random() * notes.length)];
+      note.style.left = Math.random() * window.innerWidth + "px";
+      const colors = ["#ff6fa7","#ffe0f0","#a83c66","#f0dbe4","#ffb6d9"];
+      note.style.color = colors[Math.floor(Math.random() * colors.length)];
+      note.style.fontSize = (28 + Math.random()*12) + "px";
+      const duration = 4 + Math.random()*4;
+      note.style.animation = `floatUpSway ${duration}s linear forwards`;
+      document.body.appendChild(note);
+      setTimeout(() => note.remove(), duration*1000);
+    }, 600);
+
+    // Splash screen fade-out
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const splash = document.getElementById("splash");
+        splash.style.animation = "fadeOut 1.5s forwards";
+        setTimeout(() => splash.remove(), 1500);
+
+        // Animate gallery images
+        const images = document.querySelectorAll(".gallery img");
+        images.forEach((img, index) => {
+          img.style.animation = `imageFadeIn 1s ease forwards`;
+          img.style.animationDelay = `${index*0.3}s`;
+        });
+      }, 2500);
     });
-
-    // Animate bio & songs
-    const sections=document.querySelectorAll(".bio, .songs");
-    sections.forEach((sec,i)=>{
-      setTimeout(()=>{
-        sec.style.opacity=1;
-        sec.style.transform="translateY(0)";
-      }, i*400 + 400);
-    });
-
-    // Animate iframes slide up
-    const iframes=document.querySelectorAll(".songs iframe");
-    iframes.forEach((frame,i)=>{
-      setTimeout(()=>{
-        frame.style.opacity=1;
-        frame.style.transform="translateY(0)";
-      }, i*400 + 600);
-    });
-  },2000);
-});
-
-// Show Love Button
-function showLove(){
-  let msg=document.createElement("div");
-  msg.innerText="💜 Beliebers forever! 💜";
-  Object.assign(msg.style,{
-    position:"fixed", bottom:"30px", left:"50%", transform:"translateX(-50%)",
-    background:"#ff69b4", color:"white", padding:"16px 32px",
-    borderRadius:"15px", fontSize:"20px", boxShadow:"0 6px 14px rgba(0,0,0,0.4)"
-  });
-  document.body.appendChild(msg);
-  setTimeout(()=>msg.remove(),3000);
-}
-
-// Floating Notes
-const notes=["🎵","🎶","💜","🎤"];
-setInterval(()=>{
-  let n=document.createElement("div"); n.className="note";
-  n.innerText=notes[Math.floor(Math.random()*notes.length)];
-  n.style.left=Math.random()*window.innerWidth+"px";
-  n.style.fontSize=(48+Math.random()*30)+"px";
-  const colors=["#ff6fa7","#ffe0f0","#a83c66","#f0dbe4","#ffb6d9"];
-  n.style.color=colors[Math.floor(Math.random()*colors.length)];
-  const duration=5+Math.random()*5;
-  n.style.animation=`floatUpSway ${duration}s linear forwards`;
-  document.body.appendChild(n);
-  setTimeout(()=>n.remove(),duration*1000);
-},500);
-
-// Floating Sparkles
-const sparkles=["✨","💖","🌸","🎀","💜"];
-setInterval(()=>{
-  let s=document.createElement("div"); s.className="sparkle";
-  s.innerText=sparkles[Math.floor(Math.random()*sparkles.length)];
-  s.style.left=Math.random()*window.innerWidth+"px";
-  s.style.fontSize=(40+Math.random()*40)+"px";
-  const colors=["#ffb6c1","#ffe0f0","#ff69b4","#f0dbe4","#a83c66"];
-  s.style.color=colors[Math.floor(Math.random()*colors.length)];
-  const duration=4+Math.random()*4;
-  s.style.animation=`floatUpSway ${duration}s linear forwards`;
-  document.body.appendChild(s);
-  setTimeout(()=>s.remove(),duration*1000);
-},600);
-</script>
+  </script>
 </body>
 </html>
