@@ -7,117 +7,210 @@
     body {
       margin: 0;
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(135deg, #2b0a18, #4b1e2f);
+      background: linear-gradient(135deg, #2b0a18, #4b1e2f, #6b2c44, #a83c66);
+      background-size: 400% 400%;
+      animation: bgShift 15s ease infinite;
       color: #f4e8ec;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header {
       text-align: center;
-      padding: 60px 20px 40px;
-      background: rgba(0, 0, 0, 0.3);
+      padding: 80px 20px 60px;
+      background: rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
     }
 
     header h1 {
-      font-size: 48px;
+      font-size: 60px;
       margin: 0;
-      color: #ffffff;
-      letter-spacing: 2px;
+      color: #fff;
+      letter-spacing: 4px;
+      text-shadow: 0 0 12px #ffb6d9, 0 0 25px #a83c66;
+      animation: fadeDown 1.5s ease;
     }
 
     header p {
-      font-size: 18px;
-      color: #d1b6c4;
-      margin-top: 10px;
+      font-size: 22px;
+      color: #f1cfe1;
+      margin-top: 15px;
+      animation: fadeUp 2s ease;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
-      max-width: 1000px;
-      margin: 40px auto;
+      max-width: 1100px;
+      margin: 50px auto;
       padding: 0 20px;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.4);
-      transition: transform 0.4s ease, opacity 0.4s ease;
+      border-radius: 14px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.5s ease, filter 0.5s ease;
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
+      transform: scale(1.08) rotate(-1deg);
+      filter: brightness(1.2);
     }
 
     .bio, .songs {
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 40px;
+      max-width: 850px;
+      margin: 80px auto;
+      padding: 50px;
       background: rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
+      border-radius: 16px;
       text-align: center;
       animation: fadeUp 1.5s ease;
+      backdrop-filter: blur(4px);
     }
 
     .bio h2, .songs h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
+      font-size: 32px;
+      margin-bottom: 25px;
       color: #ffb6d9;
+      text-shadow: 0 0 8px #a83c66;
     }
 
     .bio p {
-      font-size: 18px;
+      font-size: 20px;
       color: #f0dbe4;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .songs iframe {
       width: 100%;
       max-width: 560px;
       height: 315px;
-      margin: 15px 0;
-      border-radius: 12px;
+      margin: 20px 0;
+      border-radius: 14px;
       border: none;
       box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .songs iframe:hover {
+      transform: scale(1.05);
     }
 
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 14px 28px;
-      font-size: 18px;
-      background: #a83c66;
+      margin-top: 25px;
+      padding: 15px 32px;
+      font-size: 20px;
+      background: linear-gradient(90deg, #ff6fa7, #a83c66);
       color: white;
       text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s ease, transform 0.3s ease;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .btn:hover {
-      background: #912e53;
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
       background: #2b0a18;
       color: #c7a8b6;
-      font-size: 14px;
-      margin-top: 40px;
+      font-size: 15px;
+      margin-top: 60px;
+      letter-spacing: 1px;
+    }
+
+    /* Floating music notes */
+    .note {
+      position: fixed;
+      font-size: 24px;
+      opacity: 0.7;
+      animation: floatUp 6s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh) translateX(0); opacity: 1; }
+      to { transform: translateY(-20vh) translateX(30px); opacity: 0; }
     }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Splash screen styles */
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #a83c66, #4b1e2f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+      color: #fff;
+      animation: fadeIn 1.5s ease;
+    }
+
+    #splash h1 {
+      font-size: 48px;
+      margin: 0;
+      text-shadow: 0 0 12px #fff, 0 0 24px #ffb6d9;
+      animation: pulse 1.5s infinite;
+    }
+
+    #splash p {
+      font-size: 20px;
+      margin-top: 15px;
+      color: #ffe0f0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Splash Screen -->
+  <div id="splash">
+    <h1>Welcome Belieber 💜✨</h1>
+    <p>Loading your fan experience...</p>
+  </div>
+
+  <!-- Main Page -->
   <header>
     <h1>Justin Bieber</h1>
     <p>Beliebers Forever 💜</p>
@@ -144,7 +237,6 @@
 
   <section class="songs">
     <h2>🎵 Top Justin Bieber Songs</h2>
-    
     <iframe src="https://www.youtube.com/embed/kffacxfA7G4" title="Justin Bieber - Baby"></iframe>
     <iframe src="https://www.youtube.com/embed/fRh_vgS2dFE" title="Justin Bieber - Sorry"></iframe>
     <iframe src="https://www.youtube.com/embed/oyEuk8j8imI" title="Justin Bieber - Love Yourself"></iframe>
@@ -167,15 +259,36 @@
       msg.style.transform = "translateX(-50%)";
       msg.style.background = "#a83c66";
       msg.style.color = "white";
-      msg.style.padding = "12px 24px";
-      msg.style.borderRadius = "10px";
-      msg.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
-      msg.style.fontSize = "16px";
+      msg.style.padding = "14px 28px";
+      msg.style.borderRadius = "12px";
+      msg.style.boxShadow = "0 4px 14px rgba(0,0,0,0.4)";
+      msg.style.fontSize = "18px";
       msg.style.animation = "fadeUp 0.7s ease";
       document.body.appendChild(msg);
-
       setTimeout(() => { msg.remove(); }, 3000);
     }
+
+    // Floating musical notes
+    const notes = ["🎵","🎶","💜","✨"];
+    setInterval(() => {
+      let note = document.createElement("div");
+      note.className = "note";
+      note.innerText = notes[Math.floor(Math.random()*notes.length)];
+      note.style.left = Math.random() * window.innerWidth + "px";
+      note.style.top = "100vh";
+      note.style.animationDuration = (4 + Math.random()*4) + "s";
+      document.body.appendChild(note);
+      setTimeout(() => note.remove(), 7000);
+    }, 1000);
+
+    // Splash screen fade-out
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const splash = document.getElementById("splash");
+        splash.style.animation = "fadeOut 1.5s forwards";
+        setTimeout(() => splash.remove(), 1500);
+      }, 2500); // stays for 2.5s before fading
+    });
   </script>
 
 </body>
