@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Justin Bieber Fan Page</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
+/* BODY & BACKGROUND */
 body {
   margin:0;
-  font-family:'Comic Neue', cursive, Arial, sans-serif;
+  font-family:'Press Start 2P', cursive;
   background: linear-gradient(135deg,#2b0a18,#4b1e2f,#6b2c44,#a83c66);
   background-size:400% 400%;
   animation:bgShift 20s ease infinite;
@@ -21,7 +24,7 @@ body {
   100%{background-position:0% 50%;}
 }
 
-/* SPLASH */
+/* SPLASH SCREEN */
 #splash{
   position:fixed;top:0;left:0;width:100%;height:100%;
   display:flex;justify-content:center;align-items:center;flex-direction:column;
@@ -29,8 +32,7 @@ body {
   z-index:9999;color:#fff;
 }
 #splash h1{
-  font-size:60px;
-  margin:0;
+  font-size:60px;margin:0;
   text-shadow:0 0 15px #fff,0 0 30px #ffb6d9;
   animation:pulse 1.5s infinite;
 }
@@ -58,10 +60,6 @@ header h1{
 header p{
   font-size:22px;color:#f1cfe1;margin-top:15px;
   animation:fadeUp 2s ease;
-}
-header h1:hover, header p:hover{
-  cursor:pointer;
-  color:#ffe0f0;
 }
 
 /* 3D CAROUSEL */
@@ -97,10 +95,7 @@ header h1:hover, header p:hover{
 .carousel-item:hover {
   transform: scale(1.1) translateZ(50px);
 }
-@keyframes spin {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
-}
+@keyframes spin {from{transform:rotateY(0deg);}to{transform:rotateY(360deg);}}
 
 /* BIO */
 .bio{
@@ -128,7 +123,7 @@ header h1:hover, header p:hover{
   animation:twinkle 1s infinite alternate;
 }
 .bio p{
-  font-size:20px;
+  font-size:18px;
   color:#f0dbe4;
   margin-bottom:18px;
   line-height:1.8;
@@ -161,7 +156,7 @@ header h1:hover, header p:hover{
   display:inline-block;
   margin-top:25px;
   padding:15px 32px;
-  font-size:20px;
+  font-size:18px;
   background:linear-gradient(90deg,#ff6fa7,#a83c66);
   color:white;
   border-radius:12px;
@@ -173,12 +168,7 @@ header h1:hover, header p:hover{
   transform:translateY(-3px) scale(1.05);
   box-shadow:0 8px 20px rgba(0,0,0,0.6);
 }
-@keyframes heartbeat{
-  0%,100%{transform:scale(1);}
-  25%{transform:scale(1.05);}
-  50%{transform:scale(1.1);}
-  75%{transform:scale(1.05);}
-}
+@keyframes heartbeat{0%,100%{transform:scale(1);}25%{transform:scale(1.05);}50%{transform:scale(1.1);}75%{transform:scale(1.05);}}
 
 /* FOOTER */
 footer{
@@ -195,18 +185,15 @@ footer{
   75%{transform:translateY(25vh) translateX(15px) rotate(5deg);}
   100%{transform:translateY(-20vh) translateX(0) rotate(0deg);opacity:0;}
 }
-@keyframes imageFadeIn{from{opacity:0;transform:translateY(40px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}
 @keyframes twinkle{0%{opacity:0.4;}100%{opacity:1;}}
-.note{
-  position:fixed;
-  pointer-events:none;
-  text-shadow:0 0 6px #fff,0 0 12px #ff69b4,0 0 18px #a83c66;
-  opacity:0.8;
+.note, .explosion{
+  position:fixed;pointer-events:none;text-shadow:0 0 6px #fff,0 0 12px #ff69b4,0 0 18px #a83c66;opacity:0.8;font-size:24px;
 }
 </style>
 </head>
 <body>
 
+<!-- SPLASH -->
 <div id="splash">
   <h1>Welcome Belieber 💜✨</h1>
   <p>Get ready for the ultimate fan experience!</p>
@@ -230,7 +217,7 @@ footer{
 
 <section class="bio">
   <h2>About Justin</h2>
-  <p>Justin Bieber is a Canadian singer, songwriter, and global pop sensation who first rose to fame at 13 with “Baby.” He has won Grammys, AMAs, and Billboard Awards. Known for his catchy pop hits, emotional ballads, and collaborations with top artists, Justin has captivated millions worldwide. He is also a philanthropist, fashion icon, and talented musician. Fun Fact: Justin taught himself guitar and piano, and loves photography and videography! Beliebers celebrate his music, his style, and his heart.</p>
+  <p>Justin Bieber is a Canadian singer, songwriter, and global pop sensation. He rose to fame with “Baby” at age 13 and has since won numerous awards including Grammys, AMAs, and Billboard honors. Known for hits like “Sorry,” “Love Yourself,” and “Peaches,” Justin inspires millions of fans worldwide. Beyond music, he’s a fashion icon, philanthropist, and talented multi-instrumentalist. Beliebers love his heart, his style, and his music that transcends generations!</p>
   <a href="javascript:void(0)" class="btn" onclick="showLove()">Show Your Love 💖</a>
 </section>
 
@@ -247,36 +234,8 @@ Made with ❤️ by Beliebers | You're so cute
 </footer>
 
 <script>
-function showLove(){
-  let msg=document.createElement("div");
-  msg.innerText="💜 Beliebers forever! 💜";
-  Object.assign(msg.style,{
-    position:"fixed", bottom:"30px", left:"50%", transform:"translateX(-50%)",
-    background:"#a83c66", color:"white", padding:"16px 32px",
-    borderRadius:"15px", fontSize:"20px", boxShadow:"0 6px 14px rgba(0,0,0,0.4)"
-  });
-  document.body.appendChild(msg);
-  setTimeout(()=>msg.remove(),3000);
-}
-
-// Floating notes & sparkles
-const notes=["🎵","🎶","💜","✨","🌸","💖"];
-setInterval(()=>{
-  let n=document.createElement("div");
-  n.className="note";
-  n.innerText=notes[Math.floor(Math.random()*notes.length)];
-  n.style.left=Math.random()*window.innerWidth+"px";
-  n.style.fontSize=(40+Math.random()*40)+"px";
-  const colors=["#ff6fa7","#ffe0f0","#a83c66","#f0dbe4","#ffb6d9"];
-  n.style.color=colors[Math.floor(Math.random()*colors.length)];
-  const duration=4+Math.random()*4;
-  n.style.animation=`floatUpSway ${duration}s linear forwards`;
-  document.body.appendChild(n);
-  setTimeout(()=>n.remove(),duration*1000);
-},500);
-
-// Splash fade & animations
-window.addEventListener("load",()=>{
+// Splash fade
+window.addEventListener("load", ()=>{
   setTimeout(()=>{
     const splash=document.getElementById("splash");
     splash.style.animation="fadeOut 1.5s forwards";
@@ -285,22 +244,66 @@ window.addEventListener("load",()=>{
     // Animate songs
     const iframes=document.querySelectorAll(".songs iframe");
     iframes.forEach((frame,i)=>{
-      setTimeout(()=>{
-        frame.style.opacity=1;
-        frame.style.transform="translateY(0)";
-      },i*400+600);
+      setTimeout(()=>{frame.style.opacity=1;frame.style.transform="translateY(0)";},i*400+600);
     });
 
-    // Position carousel items in circle
+    // Carousel arrangement
     const items = document.querySelectorAll('.carousel-item');
     const numItems = items.length;
     const theta = 360 / numItems;
-    items.forEach((item, i) => {
-      const angle = theta * i;
-      item.style.transform = `rotateY(${angle}deg) translateZ(350px)`;
-    });
+    items.forEach((item, i) => {item.style.transform = `rotateY(${theta*i}deg) translateZ(350px)`;});
+
+    // Start background notes
+    spawnBackgroundNotes();
   },2000);
 });
+
+// Floating background notes
+function spawnBackgroundNotes() {
+  const notes = ["🎵","🎶","💜","✨","🌸","💖"];
+  setInterval(() => {
+    let n = document.createElement("div");
+    n.className = "note";
+    n.innerText = notes[Math.floor(Math.random() * notes.length)];
+    n.style.left = Math.random() * window.innerWidth + "px";
+    n.style.fontSize = (28 + Math.random() * 28) + "px";
+    const colors = ["#ff6fa7","#ffe0f0","#a83c66","#f0dbe4","#ffb6d9"];
+    n.style.color = colors[Math.floor(Math.random()*colors.length)];
+    const duration = 4 + Math.random() * 4;
+    n.style.animation = `floatUpSway ${duration}s linear forwards`;
+    document.body.appendChild(n);
+    setTimeout(() => n.remove(), duration*1000);
+  }, 400);
+}
+
+// Show Your Love button
+function showLove() {
+  const numParticles = 25;
+  const notes = ["💜","💖","🎶","✨"];
+  for(let i=0;i<numParticles;i++){
+    let p = document.createElement("div");
+    p.className="explosion";
+    p.innerText = notes[Math.floor(Math.random()*notes.length)];
+    p.style.left = (window.innerWidth/2 - 30 + (Math.random()*60-30)) + "px";
+    p.style.top = (window.innerHeight-80 + (Math.random()*40-20)) + "px";
+    p.style.fontSize = (20 + Math.random()*20) + "px";
+    const angle = Math.random()*2*Math.PI;
+    const speed = 3 + Math.random()*4;
+    const vx = Math.cos(angle)*speed*10;
+    const vy = Math.sin(angle)*speed*10;
+    let start = null;
+    function animate(t){
+      if(!start) start=t;
+      let progress = (t-start)/600;
+      p.style.transform = `translate(${vx*progress}px, ${-vy*progress}px) scale(${1+progress}) rotate(${progress*360}deg)`;
+      p.style.opacity = 1-progress;
+      if(progress<1) requestAnimationFrame(animate);
+      else p.remove();
+    }
+    requestAnimationFrame(animate);
+    document.body.appendChild(p);
+  }
+}
 </script>
 </body>
 </html>
