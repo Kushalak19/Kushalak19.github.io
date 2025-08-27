@@ -4,14 +4,22 @@
 <meta charset="UTF-8">
 <title>Justin Bieber Fan Page</title>
 <style>
+/* BODY & ANIMATED BACKGROUND */
 body {
   margin:0;
   font-family:'Arial',sans-serif;
-  background: linear-gradient(135deg, #7b1e2f, #a83c66);
   color:#fff;
   overflow-x:hidden;
   line-height:1.6;
   position:relative;
+  background: linear-gradient(135deg, #b36b76, #d1889a, #e0a3b3, #b36b76);
+  background-size: 400% 400%;
+  animation: bgShift 20s ease infinite;
+}
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* SPLASH SCREEN */
@@ -61,7 +69,7 @@ header p{font-size:22px;color:#f1cfe1;margin-top:15px;}
 
 /* FAN MESSAGES */
 #fan-messages{
-  position:fixed;top:250px;right:20px;width:300px;height:60%;overflow-y:auto;
+  position:fixed;top:320px;right:20px;width:300px;height:60%;overflow-y:auto;
   background:rgba(255,255,255,0.1);padding:20px;border-radius:14px;backdrop-filter:blur(4px);box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:10;
 }
 #fan-messages h3{text-align:center;margin-bottom:15px;color:#ffe0f0;}
